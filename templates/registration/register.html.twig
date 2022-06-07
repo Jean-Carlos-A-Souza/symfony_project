@@ -3,15 +3,28 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
+<div class="container col-md-4 py-4 text-center">
     <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+  <form name="registration_form" class="contact-form" method="post">
+    
+     <div class=" row">
+        
+        <div class="form-outline mb-2 col-md-12 "><label for="registration_form_email" class="required form-label ">Email</label>
+        <input type="text" id="registration_form_email" name="registration_form[email]" required="required" maxlength="180"></div>
+        
+        <div class="form-outline mb-2 col-md-12 "><label for="registration_form_plainPassword" class="required form-label">Senha</label>
+        <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required="required" autocomplete="new-password"></div>
+        
+        <div class=" align-items-center py-4"><label for="registration_form_agreeTerms" class="required">Aceitar os Termos</label>
+        <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]"class="m-2" required="required" value="1"></div>
+        
+    </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        <button type="submit" class="btn login_submit">Register</button>
+    <input type="hidden" id="registration_form__token" name="registration_form[_token]" value="74c37e34113.ao1JImIdD75-uMwvcjVC5D00iL-OeCZ6hmD3rsYWErA.PPQIRBtCdeYvzKRZNUcOyXEM0Om2IXAu7BSe6olZX9oo3id0E2t8-RrM-A"></form>
+</div>
+
+
 {% endblock %}
