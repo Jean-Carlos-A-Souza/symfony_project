@@ -13,8 +13,8 @@ class apresenta extends AbstractController
     */
     public function homepage()
     {
-        return $this->render('index.html.twig');
-        return new Response('Ola Mundo Teste Symfony 2');
+        return $this->render('base.html.twig');
+        
     }
  
      /**

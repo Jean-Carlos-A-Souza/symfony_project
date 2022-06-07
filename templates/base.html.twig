@@ -119,7 +119,7 @@
 							</ul>
 
 						</div>
-						<a class="btn btn-outline-primary" href="{{path('login')}}">Login</a>
+						<a class="btn btn-outline-primary" href="/{{app.user ? 'logout' : 'login'}}">{{app.user ? 'Logout' : 'Login'}}</a>
 					</nav>
 				</header>
 			{% endblock %}
