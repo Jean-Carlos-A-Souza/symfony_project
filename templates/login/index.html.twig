@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+ {% block title %}Contatos{% endblock %}
+
+ 				{% block sidebar %}
+					<nav class="align-items-center navbar navbar-expand-lg p-3 px-md-4 navbar-dark bg-dark ">
+						<a class="navbar-brand" href="{{path('home_page')}}">
+							<img src="/assets/Img/symfony.png" width="30" height="30" class="d-inline-block align-top " alt="">
+							Symfony Site
+						</a>
+						
+        	</nav>
+				</header>
+			{% endblock %}
+
+ {% block body %}
+  {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post" class="container col-md-4 py-5">
+
+  <h1 class="text-center">Login</h1>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4 pt-4">
+    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+    <label class="form-label">Email</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" class="form-control" id="password" name="_password" />
+    <label class="form-label ">Senha</label>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+        <label class="form-check-label" for="form1Example3"> Lembre-me </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a class="login_reset" href="#">Esqueceu a senha?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+    <input type="hidden" name="go_to" value="{{ path('logado') }}"/>
+    <input type="hidden" name="back_to" value="{{ path('contatos') }}"/>
+  <button type="submit" class="btn btn-block login_submit ">Login</button>
+</form>
+{% endblock %}
