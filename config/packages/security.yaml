@@ -32,6 +32,7 @@ security:
                 check_path: login
                 target_path_parameter: go_to
                 failure_path_parameter: back_to
+                enable_csrf: true
 
 
          
