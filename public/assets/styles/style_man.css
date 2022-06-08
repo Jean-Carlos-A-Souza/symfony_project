@@ -183,11 +183,3 @@ body {
   background-position: right;
 }
 
-.login_submit.success {
-  background: var(--button-success);
-}
-
-.login_submit.error {
-  background: var(--input-error);
-}
-
