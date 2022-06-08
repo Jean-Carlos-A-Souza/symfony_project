@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Symfony Site
 			{% endblock %}
 		</title>
 		<link
@@ -28,7 +28,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 		{% block stylesheets %}
 			<link href="/assets/styles/style_man.css" type="text/css" rel="stylesheet"/>
 
@@ -88,12 +90,29 @@
 
 		{% block javascripts %}
 		
+		 <script>
+    
+
+  $(document).ready(function(){
+    $("a").on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+  
+        var hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function(){
+          window.location.hash = hash;
+        });
+      } 
+    });
+  });
+    </script>
 	
 		{% endblock %}
 	</head>
 	<body>
-		<header>
-			<div id="sidebar">
+		
 				{% block sidebar %}
 					<nav class="align-items-center navbar navbar-expand-lg p-3 px-md-4 navbar-dark bg-dark  navbar-fixed-top">
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Alterna navegação">
@@ -106,38 +125,36 @@
 						<div class="collapse navbar-collapse text-center " id="navbarNav">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item active">
-										<a class="nav-link" href="{{path('home_page')}}">Home
+										<a class="nav-link scrollSuave" class="scrollSuave" href="{{path('home_page')}}">Home
 											<span class="sr-only">(Pagina Atual)</span>
 										</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Sobre</a>
+									<li class="nav-item ">
+										<a class="nav-link" href="#sobre">Sobre</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{path('contatos')}}">Contatos</a>
+										<a class="nav-link" href="#contato">Contatos</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">
+										<a class="nav-link" href="#contato">
 											<i class="fab fa-whatsapp "></i>
 											(16)99420-5071 / (16)3384-1195</a>
 									</li>
-							</ul>	
-						<div class="my-2 my-lg-0">
-							<a class="btn btn-outline-primary my-2 my-sm-0" href="/{{app.user ? 'logout' : 'login'}}">{{app.user ? 'Logout' : 'Login'}}</a>
-						</div>
-						{% if app.user == none %}
-							<div class="my-2 my-lg-0 m-2">
-								<a class="btn btn-outline-info my-2 my-sm-0" href="{{path('app_register')}} ">Registro</a>
+							</ul>
+							 	
+							<div class="my-2 my-lg-0">
+								<a class="btn btn-outline-primary my-2 my-sm-0" href="/{{app.user ? 'logout' : 'login'}}">{{app.user ? 'Logout' : 'Login'}}</a>
 							</div>
-							
-						{% endif %}
+							{% if app.user == none %}
+								<div class="my-2 my-lg-0 m-2">
+									<a class="btn btn-outline-info my-2 my-sm-0" href="{{path('app_register')}} ">Cadastro</a>
+								</div>				
+							{% endif %}
 
 						</div>
 					</nav>
 				
 			{% endblock %}
-		</div>
-		</header>
 
 			{% block body %}
 
@@ -202,8 +219,8 @@
 
 						<div class="row featurette">
 
-							<div class="col-md-7">
-								<h2 class="featurette-heading">Quem Somos
+							<div class="col-md-7" id="sobre">
+								<h2  class="featurette-heading">Quem Somos
 									<span class="text-muted">Supreendente, não?!</span>
 								</h2>
 								<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
@@ -242,7 +259,7 @@
 				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
                   <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <p class="">Autor: Metatask Alpha</p>
+                    <small class="text-muted m-1">Autor: Metatask Alpha</small>
                     <small class="text-muted">29/05/2022</small>
                   </div>
                 </div>
@@ -255,7 +272,7 @@
 				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
                   <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                  <p>Autor: Metatask Alpha</p>
+                  	<small class="text-muted m-1">Autor: Metatask Alpha</small>
                     <small class="text-muted">18/05/2022</small>
                   </div>
                 </div>
@@ -268,7 +285,7 @@
 				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
                   <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
                   <div class="d-flex justify-content-between align-items-center">
-					<p>Autor: Metatask Alpha</p>
+					<small class="text-muted m-1">Autor: Metatask Alpha</small>
                     <small class="text-muted">05/06/2022</small>
                   </div>
                 </div>
@@ -352,60 +369,77 @@
 					</div>
 
 					<!--Contatos-->
-
-					<div class="contact-area py-5">
-						<div class="container">
-							<h1 class="text-center  py-5">Contatos</h1>
-
-							<div class="row">
-			        	<div class="col-md-6 col-sm-12 col-xs-12">
-						<h1 class="text-center py-2">Nos Envie um Messagem</h1>
-					        <div class="contact-form">
-                    <form>
-					<div class="row">
-                      <!-- Name input -->
-                      <div class="col-md-6 col-xs-4">
-                        <input type="text" id="nome" class="form-control" placeholder="Digite o Nome..." required autofocus/>
-                        <label class="form-label" for="form4Example1">Nome</label>
-                      </div>
-					   <div class="col-md-6 col-xs-4 ">
-                        <input type="text" id="sobrenome" class="form-control" placeholder="Digite o Sobrenome..." required autofocus/>
-                        <label class="form-label" for="form4Example1">Sobrenome</label>
-                      </div>
-				
-  						<div class="col-md-6 col-xs-4 py-2">
-                      <!-- Email input -->
-                      
-                        <input type="text" id="telefone" name="telefone" class=" form-control" placeholder=" Digite o Telefone..." maxlength="15"  required autofocus/>
-                        <label class="form-label" for="form4Example3">Telefone</label>
-						
-						</div>						
-						<div class="col-md-6 col-xs-4 py-2">
-						<input id="startDate" class="form-control" type="date" required autofocus/>
-                     	<label class="form-label" for="form4Example3">Data</label>
+					
+							<h1 class="text-center py-3" id="contato">Contatos</h1>
+							<div class="text-center py-3 col-md-6 offset-md-3 ">
+							
+							<div class="row mx-0 ">
+									<div class=" py-2 row col-md-6 col-xs-4 mx-0 ">
+									<h3>Telefone</h3>
+										<h5><i class="fab fa-whatsapp "></i>	(16)99420-5071 </h5>
+										<h5><i class="fab fa-whatsapp "></i>	(16)3384-1195</h5>
+									</div>
+							
+								<div class=" py-2 row col-md-6 col-xs-4 mx-0  ">
+								<h3>Email</h3>
+									<h5><i class="fa fa-envelope "></i>	teste@gmail.com</h5>
+									<h5><i class="fa fa-envelope "></i>	teste@gmail.com</h5>
+								</div>
+							
+							</div>
 						</div>
-					</div>
-                      <div class="form-outline mb-2">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Digite o Email..."  maxlength="60" required autofocus/>
-                        <label class="form-label" for="form4Example2">Email</label>
-                      </div>
-                      <!-- Message input -->
-                      <div class="form-outline mb-4">
-                        <textarea class="form-control" id="mensagem" minlength="35" rows="3" placeholder="Digite a Messagem..." required autofocus></textarea>
-                        <label class="form-label" for="form4Example3">Message</label>
-                      </div>
-                      <!-- Submit button -->
-                      <button type="submit" class="btn btn-primary btn-block login_submit ">Enviar</button>
-                    </form>
-                 </div>
-			      	</div>
-			      	<div class="col-md-6 col-sm-12 col-xs-12">
-					  <h1 class="text-center  py-2">Venha nos Conhecer</h1>
-					      <div class="map-area">
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.3626504543017!2d-48.17583258510307!3d-21.804914785583087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f393401b49d1%3A0x5ac88c7d974364e6!2sWAB%20Ag%C3%AAncia%20Digital!5e0!3m2!1spt-BR!2sbr!4v1654090236828!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<div class="contact-area py-3">
+						<div class="container">
+							
+							<div class="row ">
+								<div class="col-md-6 offset-md-3 ">
+									<h1 class="text-center py-3">Nos Envie um Messagem</h1>
+								<div class="contact-form ">
+									<form>
+									<div class="row ">
+									<!-- Name input -->
+										<div class="col-md-6 col-xs-4">
+											<input type="text" id="nome" class="form-control" placeholder="Digite o Nome..." required autofocus/>
+											<label class="form-label" for="form4Example1">Nome</label>
+										</div>
+										<div class="col-md-6 col-xs-4 ">
+											<input type="text" id="sobrenome" class="form-control" placeholder="Digite o Sobrenome..." required autofocus/>
+											<label class="form-label" for="form4Example1">Sobrenome</label>
+										</div>
+									
+											<div class="col-md-6 col-xs-4 py-2">
+										<!-- Email input -->
+										
+											<input type="text" id="telefone" name="telefone" class=" form-control" placeholder=" Digite o Telefone..." maxlength="15"  required autofocus/>
+											<label class="form-label" for="form4Example3">Telefone</label>
+											
+											</div>						
+											<div class="col-md-6 col-xs-4 py-2">
+											<input id="startDate" class="form-control" type="date" required autofocus/>
+											<label class="form-label" for="form4Example3">Data</label>
+											</div>
+										</div>
+										<div class="form-outline mb-2">
+											<input type="email" id="email" name="email" class="form-control" placeholder="Digite o Email..."  maxlength="60" required autofocus/>
+											<label class="form-label" for="form4Example2">Email</label>
+										</div>
+										<!-- Message input -->
+										<div class="form-outline mb-4">
+											<textarea class="form-control" id="mensagem" minlength="35" rows="3" placeholder="Digite a Messagem..." required autofocus></textarea>
+											<label class="form-label" for="form4Example3">Message</label>
+										</div>
+										<!-- Submit button -->
+										<button type="submit" class="btn btn-primary login_submit  ">Enviar</button>
+									</div>
+								</form>
+							</div>
+			      			</div>
+							<h1 class="text-center  py-2">Venha nos Conhecer</h1>
+							<div class="col-md-6 ">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d59272.793602382226!2d-48.2151626!3d-21.797686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f393401b49d1%3A0x5ac88c7d974364e6!2sWAB%20Ag%C3%AAncia%20Digital!5e0!3m2!1spt-BR!2sbr!4v1654715607940!5m2!1spt-BR!2sbr" width="800" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div>
 							</div>
-            </div>
 
 						</div>
 					</div>
@@ -440,7 +474,7 @@
 							<p>
 								Telefone: (16)99420-5071 | (16) 3333-3333
 							</p>
-							<ul class="nav ">
+							<ul class="nav  offset-md-1 ">
 								<li class="nav-link">
 									<i class="fab fa-facebook fa-3x "></i>
 								</li>
@@ -464,4 +498,4 @@
 			</footer>
 		</body>
 	</html>
-{% endblock %}</body></html>
+{% endblock %}

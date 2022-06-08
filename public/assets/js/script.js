@@ -25,5 +25,3 @@ window.onload = function(){
       mascara( this, mtel);
     }
   }
-
-
