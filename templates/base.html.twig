@@ -31,6 +31,8 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 		{% block stylesheets %}
 			<link href="/assets/styles/style_man.css" type="text/css" rel="stylesheet"/>
 
@@ -125,7 +127,7 @@
 						<div class="collapse navbar-collapse text-center " id="navbarNav">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item active">
-										<a class="nav-link scrollSuave" class="scrollSuave" href="{{path('home_page')}}">Home
+										<a class="nav-link" href="{{path('home_page')}}">Home
 											<span class="sr-only">(Pagina Atual)</span>
 										</a>
 									</li>
@@ -137,8 +139,9 @@
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="#contato">
-											<i class="fab fa-whatsapp "></i>
-											(16)99420-5071 / (16)3384-1195</a>
+											<i class="fab fa-whatsapp me-1"></i>
+											(16)99420-5071  
+											<i class="fa fa-phone mx-1"></i>(16)3384-1195</a>
 									</li>
 							</ul>
 							 	
@@ -173,9 +176,7 @@
 									<div class="carousel-caption text-start">
 										<h1>Example headline.</h1>
 										<p>Some representative placeholder content for the first slide of the carousel.</p>
-										<p>
-											<a class="btn btn-lg btn-primary" href="#">Sign up today</a>
-										</p>
+		
 									</div>
 								</div>
 							</div>
@@ -185,9 +186,7 @@
 									<div class="carousel-caption">
 										<h1>Another example headline.</h1>
 										<p>Some representative placeholder content for the second slide of the carousel.</p>
-										<p>
-											<a class="btn btn-lg btn-primary" href="#">Learn more</a>
-										</p>
+		
 									</div>
 								</div>
 							</div>
@@ -197,9 +196,6 @@
 									<div class="carousel-caption text-end">
 										<h1>One more for good measure.</h1>
 										<p>Some representative placeholder content for the third slide of this carousel.</p>
-										<p>
-											<a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
-										</p>
 									</div>
 								</div>
 							</div>
@@ -323,7 +319,6 @@
 						</div>
 						<!-- /.row -->
 
-
 						<!-- /FIM DAS FEATUREZINHAS *-* -->
 
 					</div>
@@ -376,8 +371,8 @@
 							<div class="row mx-0 ">
 									<div class=" py-2 row col-md-6 col-xs-4 mx-0 ">
 									<h3>Telefone</h3>
-										<h5><i class="fab fa-whatsapp "></i>	(16)99420-5071 </h5>
-										<h5><i class="fab fa-whatsapp "></i>	(16)3384-1195</h5>
+										<h5><i class="fab fa-whatsapp "></i> (16)99420-5071</h5>
+										<h5><i class="fab fa-whatsapp "></i> (16)3384-1195</h5>
 									</div>
 							
 								<div class=" py-2 row col-md-6 col-xs-4 mx-0  ">
@@ -391,7 +386,7 @@
 					<div class="contact-area py-3">
 						<div class="container">
 							
-							<div class="row ">
+							<div class="row py-3">
 								<div class="col-md-6 offset-md-3 ">
 									<h1 class="text-center py-3">Nos Envie um Messagem</h1>
 								<div class="contact-form ">
@@ -434,10 +429,11 @@
 								</form>
 							</div>
 			      			</div>
-							<h1 class="text-center  py-2">Venha nos Conhecer</h1>
-							<div class="col-md-6 ">
-								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d59272.793602382226!2d-48.2151626!3d-21.797686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f393401b49d1%3A0x5ac88c7d974364e6!2sWAB%20Ag%C3%AAncia%20Digital!5e0!3m2!1spt-BR!2sbr!4v1654715607940!5m2!1spt-BR!2sbr" width="800" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							<h1 class="text-center  py-3">Venha nos Conhecer</h1>
+							<h5 class="text-center lead text-muted  py-2"> <i class="fa fa-location-dot me-2"></i>Rua Teste alpha, 328, araraquara-SP</h5>
+							<div class="col-md-12 ">
+								<div class="col-md-8 offset-md-2">
+									<iframe width="100%" height="500px" frameborder="1px" class="embed-responsive-item align-items-center" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d59272.793602382226!2d-48.2151626!3d-21.797686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f393401b49d1%3A0x5ac88c7d974364e6!2sWAB%20Ag%C3%AAncia%20Digital!5e0!3m2!1spt-BR!2sbr!4v1654715607940!5m2!1spt-BR!2sbr&key=AIzaSyAQ2KZsr6FQ_gQ6kULmD43g-Hota4e79U8" width="800" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div>
 							</div>
 
@@ -450,52 +446,127 @@
 		{% endblock %}
 
 		{% block footer %}
+<!-- Footer -->
+	<footer class="text-center text-lg-start bg-dark text-muted">
+	<!-- Section: Social media -->
+	<section
+		class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+	>
+		<!-- Left -->
+		<div class="me-5 d-none d-lg-block p-2 text-light">
+		<span>Se Connect com a gente através das nossas redes socias:</span>
+		</div>
+		<!-- Left -->
 
-			<footer class="bg-dark text-light">
-				<div class="container-fluid py-3 col-md-6  ">
-					<div class="row align-items-center">
-						<div class="col-6">
-							<ul class="nav flex-column align-items-center">
-								<li class="nav-link">
-									<a href="#">Home</a>
-								</li>
-								<li class="nav-link">
-									<a href="#">Sobre</a>
-								</li>
-								<li class="nav-link">
-									<a href="#">Contato</a>
-								</li>
-							</ul>
-						</div>
-						<div class="col-6 text-center">
-							<p>
-								Email: teste@gmail.com
-							</p>
-							<p>
-								Telefone: (16)99420-5071 | (16) 3333-3333
-							</p>
-							<ul class="nav  offset-md-1 ">
-								<li class="nav-link">
-									<i class="fab fa-facebook fa-3x "></i>
-								</li>
-								<li class="nav-link">
-									<i class="fab fa-instagram fa-3x"></i>
-								</li>
-								<li class="nav-link">
-									<i class="fab fa-twitter fa-3x"></i>
-								</li>
-								<li class="nav-link">
-									<i class="fab fa-whatsapp fa-3x"></i>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="text-center" style="background-color: #333; padding: 20px;">
-					&copy 2022 Copyright:
-					<a href="/">Symfony Site</a>
-				</div>
-			</footer>
+		<!-- Right -->
+		<div class="text-light">
+	 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+		   <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+		 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+		</div>
+		<!-- Right -->
+	</section>
+	<!-- Section: Social media -->
+
+	<!-- Section: Links  -->
+	<section class="text-light">
+		<div class="container text-center text-md-start mt-5">
+		<!-- Grid row -->
+		<div class="row mt-3">
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+			<!-- Content -->
+			<h6 class="text-uppercase fw-bold mb-4">
+				<i class="fa-solid fa-building me-3"></i>Symfony Site
+			</h6>
+			<p>
+				Here you can use rows and columns to organize your footer content. Lorem ipsum
+				dolor sit amet, consectetur adipisicing elit.
+			</p>
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+				Principais Products
+			</h6>
+			<p>
+				<a href="#!" class="text-reset">Angular</a>
+			</p>
+			<p>
+				<a href="#!" class="text-reset">React</a>
+			</p>
+			<p>
+				<a href="#!" class="text-reset">Symfony</a>
+			</p>
+			<p>
+				<a href="#!" class="text-reset">Laravel</a>
+			</p>
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+				Links de Navegação
+			</h6>
+			<p>
+				<a href="#home" class="text-reset">Home</a>
+			</p>
+			<p>
+				<a href="#sobre" class="text-reset">Sobre</a>
+			</p>
+			<p>
+				<a href="#contatos" class="text-reset">Contatos</a>
+			</p>
+			<p>
+				<a href="#!" class="text-reset">Help</a>
+			</p>
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+				Contact
+			</h6>
+			<p><i class="fa-solid fa-map-location-dot"></i> Teste de alpha, 250, jardim dev, araraquara - SP</p>
+			<p>
+				<i class="fas fa-envelope me-3"></i>
+				teste@gmail.com
+			</p>
+			<p><i class="fas fa-phone me-3"></i> (16)99420-5071</p>
+			<p><i class="fas fa-phone me-3"></i> (16)3384-1195</p>
+			</div>
+			<!-- Grid column -->
+		</div>
+		<!-- Grid row -->
+		</div>
+	</section>
+	<!-- Section: Links  -->
+
+	<!-- Copyright -->
+	<div class="text-center p-4 text-light" style="background-color: rgba(0, 0, 0, 0.05);">
+		© 2021 Copyright:
+		<a class="text-reset fw-bold text-light" href="#home">Symfony Site</a>
+	</div>
+	<!-- Copyright -->
+	</footer>
 		</body>
 	</html>
 {% endblock %}
