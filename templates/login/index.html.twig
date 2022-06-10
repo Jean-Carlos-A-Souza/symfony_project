@@ -3,24 +3,32 @@
  {% block title %}Contatos{% endblock %}
 
  				{% block sidebar %}
-					<nav class="align-items-center navbar navbar-expand-lg p-3 px-md-4 navbar-dark bg-dark ">
-						<a class="navbar-brand" href="{{path('home_page')}}">
+					<nav class="align-items-center navbar navbar-expand-lg row p-3 px-md-4 navbar-dark bg-dark ">
+						<div class="col-6">
+            <a class="navbar-brand " href="{{path('home_page')}}">
 							<img src="/assets/Img/symfony.png" width="30" height="30" class="d-inline-block align-top " alt="">
 							Symfony Site
 						</a>
-						
+            </div>
+            <div class="col-6" style="text-align: right;">
+            	{% if app.user == none %}
+									<a class="btn btn-outline-info my-2 my-sm-0  " href="{{path('app_register')}} ">Cadastro</a>
+								</div>				
+							{% endif %}
+						</div> 				
         	</nav>
-				</header>
 			{% endblock %}
 
  {% block body %}
   {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class=" py-4">
+            <h3 class="text-center text-danger">Usuário Invalido. Tente Novamente</h3>
+        </div>
     {% endif %}
 
-    <form action="{{ path('login') }}" method="post" class="container col-md-4 py-5">
+    <form action="{{ path('login') }}" method="post" class="container col-md-4 py-3">
 
-  <h1 class="text-center">Login</h1>
+  <h1 class="text-center text-primary">Login</h1>
 
   <!-- Email input -->
   <div class="form-outline mb-4 pt-4">
@@ -46,14 +54,14 @@
 
     <div class="col">
       <!-- Simple link -->
-      <a class="login_reset" href="#">Esqueceu a senha?</a>
+      <a class="" href="{{path('fail_senha')}}">Esqueceu a senha?</a>
     </div>
   </div>
 
   <!-- Submit button -->
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
     <input type="hidden" name="go_to" value="{{ path('logado') }}"/>
-    <input type="hidden" name="back_to" value="{{ path('contatos') }}"/>
+
   <button type="submit" class="btn btn-block login_submit ">Login</button>
 </form>
 {% endblock %}

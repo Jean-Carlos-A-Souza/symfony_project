@@ -2,13 +2,30 @@
 
 {% block title %}Register{% endblock %}
 
+			{% block sidebar %}
+					<nav class="align-items-center navbar navbar-expand-lg row p-3 px-md-4 navbar-dark bg-dark ">
+						<div class="col-6">
+            <a class="navbar-brand " href="{{path('home_page')}}">
+							<img src="/assets/Img/symfony.png" width="30" height="30" class="d-inline-block align-top " alt="">
+							Symfony Site
+						</a>
+            </div>
+            <div class="col-6" style="text-align: right;">
+                        	{% if app.user == none %}
+									<a class="btn btn-outline-primary my-2 my-sm-0" href="{{path('login')}} ">Login</a>
+								</div>				
+							{% endif %}
+					</div>
+        	    </nav>
+			{% endblock %}
+
 {% block body %}
 
 <div class="container col-md-4 py-4 text-center">
-    <h1>Register</h1>
+   
 
   <form name="registration_form" class="contact-form" method="post">
-    
+     <h1 class="py-2 text-info">Cadastro</h1>
      <div class=" row">
         
         <div class="form-outline mb-2 col-md-12"><label for="registration_form_email" class="required form-label ">Email</label>
@@ -22,7 +39,7 @@
         
     </div>
 
-        <button type="submit" class="btn login_submit">Register</button>
+        <button type="submit" class="btn login_submit text-white">Register</button>
     <input type="hidden" id="registration_form__token" name="registration_form[_token]" value="74c37e34113.ao1JImIdD75-uMwvcjVC5D00iL-OeCZ6hmD3rsYWErA.PPQIRBtCdeYvzKRZNUcOyXEM0Om2IXAu7BSe6olZX9oo3id0E2t8-RrM-A"></form>
 </div>
 

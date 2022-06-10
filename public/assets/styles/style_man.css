@@ -2,15 +2,9 @@
 -------------------------------------------------- */
 :root {
   --input-linear: linear-gradient(120deg, #F75590, #00C2CB);
-  --input-error: red;
   --button-linear: linear-gradient(120deg, #F75590, #00C2CB, #F75590);
   --button-disabled: #acacac;
-  --button-success: rgb(18, 151, 107);
-  --white: #fff;
-  --black: #303030;
-  --gray: #929292;
-  --light-gray: #cfcfcf;
-  --border-height: 1px;
+  --jumbotron-padding-y: 3rem;
 }
 
 /* Padding below the footer and lighter body text */
@@ -34,7 +28,7 @@ body {
   
   /* Declare heights because of positioning of img element */
   .carousel-item {
-    height: 32rem;
+    height: 38rem;
   }
   
   
@@ -53,6 +47,18 @@ body {
 }
 /* rtl:end:ignore */
 
+/* Clientes*/
+.client-logotypes img {
+  max-width: 90px;
+  }
+
+  @media (max-width: 1400px) {
+  .client-logotypes img {
+    max-width: 60px;
+    margin-bottom: 10px;
+  }
+  }
+
   /* Center align the text within the three columns below the carousel */
   
   /* Featurettes
@@ -66,11 +72,6 @@ body {
   /* rtl:begin:remove */
   .featurette-heading {
     letter-spacing: -.05rem;
-  }
-  
-  /* rtl:end:remove */
-  :root {
-    --jumbotron-padding-y: 3rem;
   }
   
   .jumbotron {
@@ -141,6 +142,9 @@ body {
 	}
 } 
 
+
+
+
 /*BOTAO */
 .login_submit {
   height: 48px;
@@ -169,3 +173,27 @@ body {
   background-position: right;
 }
 
+.sub-tl {
+  color:  #00C2CB;
+  font-size: 2em;
+  transition: 1s;
+}
+.sub-tl:hover {
+  transition: 1s;
+  color:  #3c1bb4;
+}
+
+.reso {
+  font-size: 2em;
+}
+
+.man-tl{
+  color:  #53b1f4;
+  font-size: 3em;
+  transition: 1s;
+}
+.man-tl:hover {
+  transition: 1s;
+  color:  #c319a1c9;
+  font-size: 4em;
+}

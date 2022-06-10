@@ -27,13 +27,21 @@ class apresenta extends AbstractController
 
     }
 
-       /**
+    /**
      * @Route("/contatos", name="contatos")
     */
 
     public function contato()
     {
         return $this->render('contacts.html.twig');
+    }
+    /**
+     * @Route("/fail_senha", name="fail_senha")
+    */
+
+    public function fail_senha()
+    {
+        return $this->render('login/fail_senha.html.twig');
     }
 
 
