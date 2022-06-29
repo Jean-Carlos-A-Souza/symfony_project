@@ -27,10 +27,12 @@ body {
   }
   
   /* Declare heights because of positioning of img element */
-  .carousel-item {
+  .carousel-item-2 {
     height: 38rem;
   }
   
+  
+
   
   /* MARKETING CONTENT
   -------------------------------------------------- */
@@ -155,7 +157,7 @@ body {
   background: var(--button-linear);
   background-size: 200%;
   margin-bottom: 32px;
-  color: var(--white);
+  color: #fff !important;
   font-size: 16px;
   font-weight: bold;
   border: unset;
@@ -188,12 +190,64 @@ body {
 }
 
 .man-tl{
-  color:  #53b1f4;
+  color:  #2e96e0;
   font-size: 3em;
   transition: 1s;
 }
 .man-tl:hover {
   transition: 1s;
-  color:  #c319a1c9;
+  color:  #200db4c9;
   font-size: 4em;
 }
+
+.container-2{
+  padding-left: 5em !important;
+  padding-right: 5em !important;
+}
+
+/*responsive----------------------------------------*/
+
+.img-container{
+  
+  height: 2em;
+  
+}
+
+.img-container img{
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+}
+
+.img-container:hover img{
+  -webkit-transform: scale(1.3);
+  transform: scale(1.2);
+}
+
+.prod-img {
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+
+}
+
+.prod-img:hover{
+-webkit-transform: scale(1.3);
+  transform: scale(1.1);
+
+}
+
+.depoimento-img img{
+  -webkit-transition: -webkit-transform .5s ease;
+  border-radius: 100%;
+  transition: transform 1.1s ease;
+}
+
+.depoimento-img:hover img{
+  -webkit-transition: -webkit-transform .5s ease;
+  border-radius: 40%;
+  transition: transform 1.1s ease;
+  transform: scale(1.2);
+}
+
+

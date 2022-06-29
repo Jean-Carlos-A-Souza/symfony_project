@@ -1,0 +1,54 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Hello ProdutoController!{% endblock %}
+
+{% block teste %}
+<div class="container-lg  py-4">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Gerenciamento de <b>Produtos</b></h2></div>
+                    <div class="col-sm-4">
+                        <a href="{{path('produto_adicionar')}}"  class="btn btn-outline-success "><i class="fa fa-circle-plus"></i> Adicionar </a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Descrição</th>
+                        <th>Imagen</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for produto in pagination %}
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                        <td>{{produto.id}}</td>
+                        <td>{{produto.titulo}}</td>
+                        <td>{{produto.descricao}}</td>
+                        <td>{{produto.imagen}}</td>
+                        <td>
+                            <a class="btn btn-outline-warning btn-floating m-1" title="Edit" href="{{path('produto_editar', {id:produto.id})}}" ><i class="fa fa-pen-to-square"></i></a>
+                            <a class="btn btn-outline-danger btn-floating " title="Delete"  href="{{path('produto_excluir', {id:produto.id})}}" onclick="return confirm('Confirmar Exclusão !!!! \nEsta acão não podera ser revertida, Tem Certeza ?')"><i class="fa fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}    
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="navigation">
+                  <h4> {{ knp_pagination_render(pagination) }}</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> 
+
+<!-- Modal -->
+
+{% endblock %}

@@ -4,6 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    produtos_directory: '%kernel.project_dir%/public/assets/Img/uploads/produto'
+    banners_directory: '%kernel.project_dir%/public/assets/Img/uploads/banners'
+    noticias_directory: '%kernel.project_dir%/public/assets/Img/uploads/noticias'
+    depoimentos_directory: '%kernel.project_dir%/public/assets/Img/uploads/depoimentos'
+    clientes_directory: '%kernel.project_dir%/public/assets/Img/uploads/clientes'
+    galeria_directory: '%kernel.project_dir%/public/assets/Img/uploads/galeria'
 
 services:
     # default configuration for services in *this* file
@@ -19,6 +25,3 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones

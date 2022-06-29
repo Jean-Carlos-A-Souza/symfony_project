@@ -12,7 +12,7 @@
             </div>
             <div class="col-6" style="text-align: right;">
             	{% if app.user == none %}
-									<a class="btn btn-outline-info my-2 my-sm-0  " href="{{path('app_register')}} ">Cadastro</a>
+									<a class="btn btn-outline-warning my-2 my-sm-0  " href="{{path('home_page')}} ">Voltar ao Inicio</a>
 								</div>				
 							{% endif %}
 						</div> 				
@@ -60,8 +60,9 @@
 
   <!-- Submit button -->
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-    <input type="hidden" name="go_to" value="{{ path('logado') }}"/>
-
-  <button type="submit" class="btn btn-block login_submit ">Login</button>
+  {% if is_granted('ROLE_ADMIN') %}
+  <input type="hidden" name="go_to" value="{{ path('dashboard') }}"/>
+  {% endif %}
+  <button type="submit" class="btn btn-block login_submit text-white ">Login</button>
 </form>
 {% endblock %}

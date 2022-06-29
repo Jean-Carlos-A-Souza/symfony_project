@@ -18,7 +18,7 @@
 		<meta name="theme-color" content="#712cf9">
 
 		<script src="https://maps.google.com/maps/api/js"></script>
-		<script defer src="./assets/js/script.js"></script>
+		<script defer src="/assets/js/script.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -31,6 +31,14 @@
 
 		<link rel="stylesheet" href="/assets/styles/style_man.css" type="text/css" rel="stylesheet"/>
 
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+		
+		
+
 
 		{% block stylesheets %}
 		
@@ -39,9 +47,8 @@
 	
 			</style>
 		{% endblock %}
-
 		{% block javascripts %}
-		
+
 		 <script>
     
 
@@ -85,11 +92,15 @@
 										<a class="nav-link" href="#sobre">Sobre</a>
 									</li>
 									<li class="nav-item ">
+										<a class="nav-link" href="#produto">Produtos</a>
+									</li>
+									<li class="nav-item ">
 										<a class="nav-link" href="#cliente">Clientes</a>
 									</li>
 									<li class="nav-item ">
 										<a class="nav-link" href="#galeria">Galeria</a>
 									</li>
+									
 									<li class="nav-item">
 										<a class="nav-link" href="#contato">Contatos</a>
 									</li>
@@ -104,11 +115,6 @@
 							<div class="my-2 my-lg-0">
 								<a class="btn btn-outline-primary my-2 my-sm-0" href="/{{app.user ? 'logout' : 'login'}}">{{app.user ? 'Logout' : 'Login'}}</a>
 							</div>
-							{% if app.user == none %}
-								<div class="my-2 my-lg-0 m-2">
-									<a class="btn btn-outline-info my-2 my-sm-0" href="{{path('app_register')}} ">Cadastro</a>
-								</div>				
-							{% endif %}
 
 						</div>
 					</nav>
@@ -118,56 +124,43 @@
 			{% block body %}
 
 				<main>
+				<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    {# Indicators #}
+    <div class="carousel-indicators">
+        {% for banner in banners %}
+            {% if loop.first %}{% set active = 'active' %}{% else %}{% set active = '' %}{% endif %}
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" class="{{ active }}" aria-current="true"></button>
+        {% endfor %}
+    </div>
 
-					<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-						<div class="carousel-indicators">
-							<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-							<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-							<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-						</div>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img src="/assets/Img/bg-1.jpg" width="100%" height="100%" alt="Teste">
-								<div class="container">
-									<div class="carousel-caption text-start">
-										<h1>Example headline.</h1>
-										<p>Some representative placeholder content for the first slide of the carousel.</p>
-		
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img src="/assets/Img/bg-2.jpg" width="100%" height="100%" alt="Teste">
-								<div class="container">
-									<div class="carousel-caption">
-										<h1>Another example headline.</h1>
-										<p>Some representative placeholder content for the second slide of the carousel.</p>
-		
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img src="/assets/Img/bg-3.jpg" width="100%" height="100%" alt="Teste">
-								<div class="container">
-									<div class="carousel-caption text-end">
-										<h1>One more for good measure.</h1>
-										<p>Some representative placeholder content for the third slide of this carousel.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    {# Wrapper for slides #}
+    <div class="carousel-inner" >
+        {% for banner in banners %}
+            {% if loop.first %}{% set active = 'active' %}{% else %}{% set active = '' %}{% endif %}
+            <div class=" carousel-item carousel-item-2 {{ active }}">		
+					<img src="{{ asset('assets/Img/uploads/banners/' ~ banner.imagen) }}" width="100%" height="100%" alt="Teste">
+					
+					<div class="carousel-caption d-md-block">
+							<h1>{{banner.titulo}}</h1>
+							<p>{{banner.descricao}}</p>
+					
+				</div>
+				</div>
+						
+        {% endfor %}
+    </div>
+    {# Controls #}
+	<button class=" carousel-control-prev" type="button" href="#myCarousel" data-bs-target="#myCarousel" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Anterior</span>
 						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+						<button  class=" carousel-control-next" type="button" href="#myCarousel" data-bs-target="#myCarousel" data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Proximo</span>
 						</button>
-					</div>
-					<div class="container marketing">
+</div>
 
-						<hr class="featurette-divider">
+					<div class="container marketing">
 
 						<div class="row featurette">
 
@@ -182,9 +175,9 @@
 							</div>
 						</div>
 
-						<hr class="featurette-divider">
+						
 
-						<div class="row featurette">
+						<div class="row featurette mt-5">
 							<div class="col-md-7 order-md-2">
 								<h2 class="featurette-heading man-tl">O Que Fazemos</h2>
 								<span class=" reso">Tá legal ou não tá?</span>
@@ -194,7 +187,31 @@
 							<div class="col-md-5 order-md-1">
 								<img class="featurette-image img-fluid mx-auto" src="/assets/Img/tt.jpg" alt="Generic placeholder image">
 							</div>
+
+							
 						</div>
+	<hr class="featurette-divider" id="produto">
+
+      <div class="container album" >
+						<div class="container text-center ">
+							<h1 class="man-tl">Produtos e Serviços</h1>
+						</div>
+          <div class="row py-5">
+				{% for produto in produtos %}
+								<div class="col-md-4 prod-img">
+								<div class="card mb-4 shadow-sm">
+									<img class="card-img-top" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;" src="{{ asset('assets/Img/uploads/produto/' ~ produto.imagen) }}">
+									<div class="card-body">
+									<div class=" text-center"><h1>{{produto.titulo}}</h1></div>
+									<p class="card-text">{{produto.descricao}}</p>
+									</div>
+								</div>
+								</div>
+								{% endfor %}
+								<div id="myModal" class="modal">
+          </div>
+        </div>
+
 
 						<hr class="featurette-divider">
 
@@ -203,48 +220,25 @@
 							<h1 class="man-tl">Noticias</h1>
 						</div>
           <div class="row py-5">
-           
+			{% for noticia in noticias %}
             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_18138d70bea%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_18138d70bea%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.82500076293945%22%20y%3D%22118.74000034332275%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+              <div class="card mb-4 shadow-sm prod-img ">
+                <img class="card-img-top"  data-holder-rendered="true" src="{{ asset('assets/Img/uploads/noticias/' ~ noticia.imagen) }}" style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
-				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
-                  <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
+				<div class=" text-center"><h1>{{noticia.titulo}}</h1></div>
+                  <p class="card-text">{{noticia.descricao}}</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted m-1">Autor: Metatask Alpha</small>
-                    <small class="text-muted">29/05/2022</small>
+					<small class="text-muted m-1">Autor: {{noticia.autor}}</small>
+                    <small class="text-muted">{{noticia.data | date('d/m/Y')}}</small>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_18138d70beb%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_18138d70beb%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.82500076293945%22%20y%3D%22118.74000034332275%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
-                  <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                  	<small class="text-muted m-1">Autor: Metatask Alpha</small>
-                    <small class="text-muted">18/05/2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_18138d70bec%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_18138d70bec%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.82500076293945%22%20y%3D%22118.74000034332275%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-				<div class=" text-center"><h1>Titulo da Noticia</h1></div>
-                  <p class="card-text">Este é um card maior e que suporta texto abaixo, como uma introdução mais natural ao conteúdo adicional. No entanto, esse conteúdo é um pouco maior.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-					<small class="text-muted m-1">Autor: Metatask Alpha</small>
-                    <small class="text-muted">05/06/2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+			{% endfor %}
           </div>
         </div>
+
+	<hr class="featurette-divider">
 
 		<section class="text-center my-4 py-4 my-md-5 py-md-5">
 
@@ -252,85 +246,86 @@
 	<p class="mb-4">
         Mais de<strong> +2.000,00 </strong>clientes bem atentidos e sastifeitos com nossos serviços e produtos. 
       </p>
+	 
       <div class="row client-logotypes">
-        <div class="col-lg-1 col-4">
+	   {% for cliente in clientes %}
+        <div class="col-lg-1 col-4 img-container">
    			<picture>
-              <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/nasa.webp" type="image/webp">
-              <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/nasa.webp" class="img-fluid " alt="Nasa - logo">
+              <img src="{{ asset('assets/Img/uploads/clientes/' ~ cliente.imagen) }}" class="img-fluid " alt="{{cliente.nome}}">
             </picture>
         </div>
-
-        <div class="col-lg-1 col-4">
+		{% endfor %}
+        <div class="col-lg-1 col-4 img-container">
    			<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/amazon.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/amazon.webp" class="img-fluid " alt="Amazon - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    			<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/nike.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/nike.webp" class="img-fluid " alt="Nike - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/ikea.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/ikea.webp" class="img-fluid " alt="Ikea - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/kpmg.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/kpmg.webp" class="img-fluid " alt="KPMG - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/sony.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/sony.webp" class="img-fluid " alt="Sony - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/unity.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/unity.webp" class="img-fluid " alt="Unity - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/samsung.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/samsung.webp" class="img-fluid" alt="Samsung - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/airbus.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/airbus.webp" class="img-fluid " alt="Airbus - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/yahoo.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/yahoo.webp" class="img-fluid " alt="Yahoo - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/deloitte.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/deloitte.webp" class="img-fluid " alt="Deloitte - logo">
             </picture>
         </div>
 
-        <div class="col-lg-1 col-4">
+        <div class="col-lg-1 col-4 img-container">
    					<picture>
               <source srcset="https://mdbcdn.b-cdn.net/img/logo/brands/new/ge.webp" type="image/webp">
               <img src="https://mdbcdn.b-cdn.net/img/logo/brands/new/ge.webp" class="img-fluid " alt="GE - logo">
@@ -339,17 +334,21 @@
       </div>
     </section>
 
+		
+
 						<div class="container text-center py-3">
 							<h2 class="sub-tl">Depoimentos</h2>
 						</div>
 						<div class="row py-5">
 
-							<div class="col-lg-4">
-								<img class="rounded-circle" src="/assets/Img/tt.jpg" alt="Generic placeholder image" width="140" height="140">
-								<h3 class="py-3">Título 01</h3>
-								<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+							{% for depoimento in depoimentos %}
+							<div class="col-lg-4 depoimento-img">
+								<img class="" src="{{ asset('assets/Img/uploads/depoimentos/' ~ depoimento.imagen) }}" alt="Generic placeholder image" width="140" height="140">
+								<h3 class="py-3">{{depoimento.nome}}</h3>
+								<p>{{depoimento.depoimento}} </p>
 						
 							</div>
+							{% endfor %}
 							<!-- /.col-lg-4 -->
 							<div class="col-lg-4">
 								<img class="rounded-circle" src="/assets/Img/tt.jpg" alt="Generic placeholder image" width="140" height="140">
@@ -372,48 +371,39 @@
 
 					</div>
 					<!-- /.container -->
+
+						<hr class="featurette-divider">
+
 					<section class="jumbotron text-center " id="galeria">
+					{% for galeria in galerias %}
 						<div class="container">
-							<h1 class="jumbotron-heading man-tl">Album example</h1>
-							<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+							<h1 class="jumbotron-heading man-tl">{{galeria.titulo}}</h1>
+							<p class="lead text-muted">{{galeria.descricao}}</p>
 						</div>
+					{% endfor %}
 					</section>
 
-					<div class="album py-5 bg-light ">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top" src="/assets/Img/tt.jpg" alt="Card image cap">
-										<div class="card-body">
-											<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top" src="/assets/Img/tt.jpg" alt="Card image cap">
-										<div class="card-body">
-											<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top" src="/assets/Img/tt.jpg" alt="Card image cap">
-										<div class="card-body">
-											<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-										</div>
-									</div>
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-
+					
+		<div class="container">
+            <div class="row">
+			{% for galeria_item in galeria_items  %}	
+			<div class="col-md-3 prod-img ">
+				<div class="card mb-2">
+					<img class="card-img-top" height="180" src="{{ asset('assets/Img/uploads/galeria/' ~ galeria_item.imagen) }}" 
+					alt="Card image cap">
+				<div class="card-body">
+					<h4 class="card-title">{{galeria_item.titulo}}</h4>
+					<p class="card-text">{{galeria_item.descricao}}</p>
+				</div>
+				</div>
+			</div>
+			{% endfor %}
+			
+            </div>
+        </div>
+					
 						
-
+	<hr class="featurette-divider">
 					<!--Contatos-->
 					
 							<h1 class="text-center py-3 man-tl" id="contato">Contatos</h1>
@@ -422,64 +412,57 @@
 							<div class="row mx-0 ">
 									<div class=" py-2 row col-md-6 col-xs-4 mx-0 ">
 									<h3 >Telefone</h3>
-										<h5><i class="fab fa-whatsapp "></i> (16)99420-5071</h5>
-										<h5><i class="fab fa-whatsapp "></i> (16)3384-1195</h5>
+									{% for contato in contatos %}
+										<h5><i class="fab fa-whatsapp "></i> {{contato.telefone}}</h5>
+									{% endfor %}
 									</div>
 							
 								<div class=" py-2 row col-md-6 col-xs-4 mx-0  ">
 								<h3 >Email</h3>
-									<h5><i class="fa fa-envelope "></i>	teste@gmail.com</h5>
-									<h5><i class="fa fa-envelope "></i>	teste@gmail.com</h5>
+									{% for contato in contatos %}
+										<h5><i class="fa fa-envelope"></i> {{contato.email}}</h5>
+									{% endfor %}
 								</div>
 							
 							</div>
 						</div>
 					<div class="contact-area py-3">
-						<div class="container">
+						<div class="container ">
 							
 							<div class="row py-3">
 								<div class="col-md-6 offset-md-3 ">
-									<h1 class="text-center py-3 sub-tl">Envie um Messagem</h1>
 								<div class="contact-form ">
-									<form  action="https://formspree.io/f/moqrbwoz" name="form_contato" method="POST" >
-									<div class="row ">
-									
-										<div class="col-md-6 col-xs-4">
-											<input type="text" id="nome" name="nome" class="form-control" placeholder="Digite o Nome..." required />
-											<label class="form-label" for="form4Example1">Nome</label>
-										</div>
-										<div class="col-md-6 col-xs-4 ">
-											<input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Digite o Sobrenome..." required/>
-											<label class="form-label" for="form4Example1">Sobrenome</label>
-										</div>
-									
-											<div class="col-md-6 col-xs-4 py-2">
-											<input type="text" id="telefone" name="telefone" class=" form-control" placeholder=" Digite o Telefone..." maxlength="15"  required/>
-											<label class="form-label" for="form4Example3">Telefone</label>
-											
-											</div>						
-											<div class="col-md-6 col-xs-4 py-2">
-											<input id="startDate" class="form-control" name="data" type="date" required />
-											<label class="form-label" for="form4Example3">Data</label>
+										<h1 class="py-2 text-center">{{Titulo}}</h1>
+											<h4 class="text-success py-4">{{msg}}<h4>
+
+										{{ form_start(form) }}
+											<div class="row ">
+												{{ form_errors(form) }}
+
+												<div class="col-md-6 col-xs-4 py-2">
+												{{ form_row(form.nome) }}
+												</div>
+												<div class="col-md-6 col-xs-4 py-2">
+												{{ form_row(form.sobrenome) }}
+												</div>
+												{{ form_row(form.email) }}
+												<div class="col-md-6 col-xs-4 py-2">
+												{{ form_row(form.data) }}
+												</div>
+												<div class="col-md-6 col-xs-4 py-2" >
+												{{ form_row(form.telefone) }}
+												</div>
+												{{ form_row(form.mensagem) }}
 											</div>
-										</div>
-										<div class="form-outline mb-2">
-											<input type="email" id="email" name="email" class="form-control" placeholder="Digite o Email..."  maxlength="60" required />
-											<label class="form-label" for="form4Example2">Email</label>
-										</div>
-										
-										<div class="form-outline mb-4">
-											<textarea class="form-control" id="mensagem" name="mensagem" minlength="35" rows="3" placeholder="Digite a Messagem..." required></textarea>
-											<label class="form-label" for="form4Example3">Message</label>
-										</div>
-										
-										<button type="submit"  class="btn btn-primary login_submit text-white ">Enviar</button>
-									</div>
-								</form>
+									
+										{{ form_end(form) }}
+								
 							</div>
 			      			</div>
 							<h1 class="text-center  py-3 teste-email sub-tl">Venha nos Conhecer</h1>
-							<h5 class="text-center lead text-muted  py-2"> <i class="fa fa-location-dot me-2"></i>Rua Teste alpha, 328, araraquara-SP</h5>
+							{% for contato in contatos %}
+							<h5 class="text-center lead text-muted  py-2"> <i class="fa fa-location-dot me-2"></i> {{contato.endereco}}</h5>
+							{% endfor %}
 							<div class="col-md-12 ">
 								<div class="col-md-8 offset-md-2">
 									<iframe width="100%" height="500px" frameborder="1px" class="embed-responsive-item align-items-center" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d59272.793602382226!2d-48.2151626!3d-21.797686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f393401b49d1%3A0x5ac88c7d974364e6!2sWAB%20Ag%C3%AAncia%20Digital!5e0!3m2!1spt-BR!2sbr!4v1654715607940!5m2!1spt-BR!2sbr&key=AIzaSyAQ2KZsr6FQ_gQ6kULmD43g-Hota4e79U8" width="800" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -496,7 +479,7 @@
 
 		{% block footer %}
 <!-- Footer -->
-	<footer class="text-center text-lg-start bg-dark text-muted">
+	<footer class=" text-lg-start bg-dark text-muted">
 	<!-- Section: Social media -->
 	<section
 		class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"

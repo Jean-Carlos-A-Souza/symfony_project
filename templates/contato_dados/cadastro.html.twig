@@ -1,0 +1,28 @@
+{% extends "index.html.twig" %}
+
+ {% block title %}Contato Dados{% endblock %}
+
+  {% block teste %}
+<div class="col-md-6 offset-md-3 ">
+								<div class="contact-form ">
+										<h1 class="py-2 text-center">{{Titulo}}</h1>
+											<h4 class="text-success py-4">{{msg}}<h4>
+
+										{{ form_start(form) }}
+											<div class="row ">
+												{{ form_errors(form) }}
+
+												<div class="col-md-6 col-xs-4 py-2">
+												{{ form_row(form.telefone) }}
+												</div>
+												<div class="col-md-6 col-xs-4 py-2">
+												{{ form_row(form.email) }}
+												</div>
+												{{ form_row(form.endereco) }}
+											</div>
+									
+										{{ form_end(form) }}
+								
+							</div>
+			      			</div>
+ {% endblock %}

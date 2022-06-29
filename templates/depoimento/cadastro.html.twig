@@ -1,0 +1,23 @@
+{% extends "index.html.twig" %}
+
+ {% block title %}Depoimentos{% endblock %}
+
+  {% block teste %}
+<div class="container align-items-center text-center py-4">
+        <h1 class="py-2">{{Titulo}}</h1>
+        <h4 class="text-success py-4">{{msg}}<h4>
+        {{ form_start(form) }}
+            <div class="row col-6 offset-3">
+                {{ form_errors(form) }}
+
+                {{ form_row(form.nome) }}
+                {{ form_row(form.depoimento) }}
+                <div class="col-6 offset-3 py-2">
+                {{ form_row(form.imagen) }}
+                </div>
+
+            </div>
+        {{ form_end(form) }}
+    
+</div>
+ {% endblock %}

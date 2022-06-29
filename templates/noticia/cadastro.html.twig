@@ -1,0 +1,29 @@
+{% extends "index.html.twig" %}
+
+ {% block title %}Noticias{% endblock %}
+
+{% block teste %}
+ <div class="container align-items-center text-center py-4">
+        <h1 class="py-2">{{Titulo}}</h1>
+        <h4 class="text-success py-4">{{msg}}<h4>
+        {{ form_start(form) }}
+            <div class="row col-6 offset-3">
+                {{ form_errors(form) }}
+
+                {{ form_row(form.titulo) }}
+                {{ form_row(form.descricao) }}
+                {{ form_row(form.autor) }}
+                <div class="col-md-6 col-xs-4 py-2">
+                {{ form_row(form.data) }}
+                </div>
+                <div class="col-md-6 col-xs-4 py-2">
+                {{ form_row(form.imagen) }}
+                </div>
+                
+                <button type="submit" class="btn login_submit text-white offset-3" style="width:50%;">Cadastrar</button>
+                
+            </div>
+        {{ form_end(form) }}
+    
+</div>
+ {% endblock %}
